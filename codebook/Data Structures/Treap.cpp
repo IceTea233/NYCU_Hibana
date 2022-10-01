@@ -3,9 +3,9 @@
 #define Get(T, x) (((T) == nullptr) ? (/*default*/) : (T->x))
 
 struct Treap{
-	Treap *l, *r;
-	int pri, sz;
-	// information of T
+  Treap *l, *r;
+  int pri, sz;
+  // information of T
   // tags if needed
   Treap(int _val): l(nullptr), r(nullptr), /*info, tag*/, pri(rand()), sz(1) {}
 };
@@ -19,7 +19,7 @@ void push(Treap *&T){
 }
 
 void pull(Treap *&T){
-	if(T == nullptr) return;
+  if(T == nullptr) return;
   push(T);
   if(T->l != nullptr) push(T->l);
   if(T->r != nullptr) push(T->r);
@@ -30,11 +30,11 @@ Treap* Merge(Treap *a, Treap *b){
   if(a == nullptr) return b;
   if(b == nullptr) return a;
   if(a->pri < b->pri){
-		push(a);
+    push(a);
     a->r = Merge(a->r, b);
     pull(a);
     return a;
-	}
+  }
   else{  
     push(b);
     b->l = Merge(a, b->l);

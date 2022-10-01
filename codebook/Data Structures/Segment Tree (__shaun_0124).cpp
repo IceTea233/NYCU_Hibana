@@ -5,25 +5,25 @@
 #define RC st[cidx*2+1]
 
 struct Node{
-	int sl, sr;
-	// info, tag
+  int sl, sr;
+  // info, tag
 };
 
 Node st[4*MAX];
  
 void build(int cidx, int cl, int cr){
-	V.sl = cl;
-	V.sr = cr;
-	if(cl < cr){
-		int mid = (cl + cr) / 2;
-		build(cidx*2, cl, mid);
-		build(cidx*2+1, mid+1, cr);
-		// V.info
+  V.sl = cl;
+  V.sr = cr;
+  if(cl < cr){
+    int mid = (cl + cr) / 2;
+    build(cidx*2, cl, mid);
+    build(cidx*2+1, mid+1, cr);
+    // V.info
     // V.tag
   }
   else{
-		// V.info
-		// V.tag
+    // V.info
+    // V.tag
   }
 }
  
@@ -36,7 +36,7 @@ void push(int cidx){
 void pull(int cidx){
   push(cidx);
   if(V.sl < V.sr){
-  	push(cidx*2);
+    push(cidx*2);
     push(cidx*2+1);
     // update V.info with LC.info and RC.info
   }
@@ -45,7 +45,7 @@ void pull(int cidx){
 void modify(int cidx, int ml, int mr, /* modify */){
   if(mr < V.sl or V.sr < ml) return;
   if(ml <= V.sl and V.sr <= mr){
-  	// update V.tag
+    // update V.tag
     return;
   }
   push(cidx);
